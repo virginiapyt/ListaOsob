@@ -1,0 +1,34 @@
+﻿<Window x:Class="ListaOsob.WindowOsoba"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ListaOsob"
+        mc:Ignorable="d"
+        Title="Osoba" Height="300" Width="400">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition  />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Label Content="Imie" Grid.Row="0"/>
+        <Label Content="Nazwisko" Grid.Row="1"/>
+        <Label Content="Data ur" Grid.Row="2"/>
+
+        <TextBox Grid.Column="1" Grid.Row="0" x:Name="boximie" Margin="15"  Text="{Binding FirstName}"/>
+        <TextBox Grid.Column="1" Grid.Row="1" x:Name="boxnazwisko" Margin="15" Text="{Binding LastName}"/>
+        <DatePicker Grid.Column="1" Grid.Row="2" x:Name="boxdataur" Margin="15" 
+                    SelectedDate="{Binding BirthDay}"/>
+
+        <Button Content="Anuluj"  Grid.Column="0" Grid.Row="3" Margin="20" IsCancel="True"/>
+        <Button Content="Zapisz"  Grid.Column="1" Grid.Row="3" Margin="20" Click="Button_zapisz_Click"/>
+
+    </Grid>
+</Window>

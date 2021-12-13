@@ -1,0 +1,54 @@
+﻿<Window x:Class="ListaOsob.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ListaOsob"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Content="Wyszukaj nazwisko osoby" Margin="5"/>
+        <TextBox Grid.Column="1" x:Name="txtFilter" Margin="5" TextChanged="txtFilter_TextChanged"/>
+
+        <ListView ItemsSource="{Binding Personlist}"
+                  SelectedItem="{Binding choosenPerson}"
+                  Grid.Row="1" Grid.ColumnSpan="2" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Imie" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding FirstName}" 
+                                           FontWeight="Bold"
+                                           Foreground="green"/>
+                            </DataTemplate>                            
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                    
+                    
+                    <GridViewColumn Header="Nazwisko" DisplayMemberBinding="{Binding LastName}"/>
+                    <GridViewColumn Header="Data ur" DisplayMemberBinding="{Binding BirthDay}"/>
+
+
+                </GridView>                
+            </ListView.View>         
+            
+        </ListView>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="2" >
+            <Button Content="Dodaj" x:Name="btn_dodaj" Click="btn_dodaj_Click" Margin="20 5 20 5"/>
+            <Button Content="Edytuj" x:Name="btn_edytuj" Margin="20 5 20 5"/>
+            <Button Content="Usun" x:Name="btn_usun" Margin="20 5 20 5"/>
+
+        </StackPanel>
+    </Grid>
+</Window>
